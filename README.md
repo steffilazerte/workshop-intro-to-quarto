@@ -6,11 +6,9 @@
 
 Welcome! 
 
-Do you struggle to keep track of your R analyses? Is future-self constantly complaining about past-self's inability to document scripts, data and package versions? Come explore the magic of Quarto! Turn your R scripts into reproducible reports complete with all the information future-self needs to write up your analyses.
+Do you struggle to keep track of your research analyses in R? Is future-self constantly complaining about past-self's inability to document scripts, data and package versions? Come explore the magic of Quarto! Turn your R scripts into reproducible reports complete with all the information future-self needs to write up your analyses.
 
-In this workshop we'll learn about Markdown, RMarkdown and Quarto. We'll cover different ways of creating reports from scripts and how to customize the output to maximize beauty as well as reproducibility. You will have the opportunity to learn and practice, and will go home with a collection of resources to help you along your journey. Example scripts will be available, but best is to have your own!
-
-Participants do not need to be R experts but should be somewhat familiar with R and RStudio and will be expected to have both installed prior to the workshop.
+In this workshop we'll learn about Markdown, RMarkdown and Quarto. We'll cover different ways of creating reports from scripts and how to customize the output to maximize beauty as well as reproducibility. You will have the opportunity to learn and practice, and will go home of a collection of resources to help you along your journey. Example scripts to work with will be available, but best is to bring your own.
 
 This GitHub repository holds all the information relating to our workshop.
 
