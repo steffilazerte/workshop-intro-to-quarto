@@ -494,7 +494,7 @@ Seriously, **[cite](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-pac
 
 # Your Turn
 
-Use the more advanced [template](https://steffilazerte.ca/intro_to_quarto/example.qmd)
+Use the more advanced [template](https://steffilazerte.ca/workshop-intro-to-quarto/example.qmd)
 (`example.qmd`) to create a reproducible report of your analysis. 
 
 Consider the options we learned
@@ -649,7 +649,7 @@ quarto::quarto_render(
 ::::
 
 :::{.absolute top=0 right=0}
-[See `example_spin.R`](https://steffilazerte.ca/intro_to_quarto/example_spin.R)
+[See `example_spin.R`](https://steffilazerte.ca/workshop-intro-to-quarto/example_spin.R)
 :::
 
 
@@ -747,7 +747,7 @@ Backwards compatibility for Quarto 1\
 
 ### Examples
 
-- [This presentation](https://github.com/steffilazerte/intro_to_quarto)
+- [This presentation](https://github.com/steffilazerte/workshop-intro-to-quarto)
 - [Quarto Gallery](https://quarto.org/docs/gallery/)
 - [R Markdown Gallery](https://rmarkdown.rstudio.com/gallery.html)
 :::
