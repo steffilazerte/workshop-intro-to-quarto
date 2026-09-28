@@ -3,7 +3,7 @@ format:
   revealjs:
     author-steffi: true
     title: "Introduction to Quarto <br> for Reproducibility"
-    subtitle: UNBC Applied Analysis Hub
+    subtitle: SCO-SOC Virtual Meeting 2026
     date: today
     date-format: iso
     title-slide-attributes: 

@@ -8,3 +8,5 @@ intro_to_quarto.pdf
 *_cache/
 example_files/
 example_spin_files/
+
+**/*.quarto_ipynb
