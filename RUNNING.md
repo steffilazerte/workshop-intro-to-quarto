@@ -8,7 +8,9 @@ Hi everyone,
 
 I'm looking forward to exploring Quarto for Reproducibility with you all next week.
 
-To make sure that we're all on the same page and can get right into it, I ask that you follow these Setup Instructions (https://github.com/steffilazerte/workshop-intro-to-quarto#before-the-workshop), namely, install (or update!) R and RStudio, and install some packages we'll be using throughout. There will be opportunities for you to try adapting your own scripts, so if you have a script you'd like to work on, be sure to have it handy. If you run into any problems or have questions, feel free to reach out, sel@steffilazerte.ca.
+You can find our workshop resources in the Workshop README (https://github.com/steffilazerte/workshop-intro-to-quarto#workshop-resources). 
+
+Further, to make sure that we're all on the same page and can get right into it, I ask that you follow these Setup Instructions (https://github.com/steffilazerte/workshop-intro-to-quarto#before-the-workshop), namely, install (or update!) R and RStudio/Positron, and install some packages we'll be using throughout. There will be opportunities for you to try adapting your own scripts, so if you have a script you'd like to work on, be sure to have it handy. If you run into any problems or have questions, feel free to reach out! 
 
 Take care and see you next week!
 
