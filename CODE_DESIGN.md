@@ -65,6 +65,9 @@ script:
    PDF is committed; the full PDF is gitignored.
 4. Make a GitHub release with `usethis::use_github_release()`.
 
+Before starting, check that Docker, Ghostscript and the Quarto CLI are
+installed.
+
 ## Slide deck structure
 
 - The `index.qmd` front matter configures revealjs. It uses
