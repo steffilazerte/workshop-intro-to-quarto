@@ -33,15 +33,17 @@ This GitHub repository holds all the information relating to our workshop.
 ## Workshop resources
 
 - Slides
-  - [html](https://steffilazerte.ca/intro_to_quarto/index.html) (best)
-  - [pdf](https://steffilazerte.ca/intro_to_quarto/intro_to_quarto_sm.pdf)
+  - [html](https://steffilazerte.ca/workshop-intro-to-quarto/index.html) (best)
+  - [pdf](https://steffilazerte.ca/workshop-intro-to-quarto/intro_to_quarto_sm.pdf)
 - Example files
   - Advanced Template
-    ([code](https://github.com/steffilazerte/intro_to_quarto/blob/main/example.qmd)
-    \| [download](https://steffilazerte.ca/intro_to_quarto/example.qmd))
+    ([code](https://github.com/steffilazerte/workshop-intro-to-quarto/blob/main/example.qmd)
+    \|
+    [download](https://steffilazerte.ca/workshop-intro-to-quarto/example.qmd))
   - Advanced Template (Spin example)
-    ([code](https://github.com/steffilazerte/intro_to_quarto/blob/main/example_spin.R)
-    \| [download](https://steffilazerte.ca/intro_to_quarto/example_spin.R))
+    ([code](https://github.com/steffilazerte/workshop-intro-to-quarto/blob/main/example_spin.R)
+    \|
+    [download](https://steffilazerte.ca/workshop-intro-to-quarto/example_spin.R))
 
 ## Before the workshop
 
