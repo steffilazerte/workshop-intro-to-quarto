@@ -32,7 +32,7 @@ execute:
 ### Consider keeping your video on [(if possible)]{.small}
 
 - Kids? Pets? Spouses? No problem
-- But ultimately, you need be comfortable! [(and you absolutely have the right to privacy)]{.small}
+- But ultimately, you need to be comfortable! [(and you absolutely have the right to privacy)]{.small}
 :::
 
 
@@ -67,7 +67,7 @@ execute:
 - Name
 - Background (Role, Area of study, etc.)
 - Familiarity with R or Programming
-- Creatures (furry, feathery, scaley, green or otherwise)?
+- Creatures (furry, feathery, scaly, green or otherwise)?
 
 ## Getting Started
 
@@ -165,9 +165,9 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 line is the predicted latitude (from GAM model)
 > - Transparent blue rectangles indicate the date ranges used to establish
 the latitudes just after and just before migration.
-> - Blue horizontal lines represents the latitude threshold for spring 
+> - Blue horizontal lines represent the latitude threshold for spring 
     migration (begin/end)
-> - Orange horzontal lines represents the latitude threshold for fall 
+> - Orange horizontal lines represent the latitude threshold for fall 
     migration (begin/end)
 
 ```{{r}}
@@ -186,7 +186,7 @@ wrap_plots(g) + plot_layout(guides = "collect", nrow = 1)
 ## Becomes...
 
 
-![](figures/report.png){fig-alt="Screenshot of a webpage with a table of contents on the left, nicely formated text explaining the visual threshold calculations and a series of plots below"}
+![](figures/report.png){fig-alt="Screenshot of a webpage with a table of contents on the left, nicely formatted text explaining the visual threshold calculations and a series of plots below"}
 
 # Wait a minute...
 
@@ -271,7 +271,7 @@ Keep it relatively simple for now `r emo::ji("wink")`
 ### R & RStudio
 
 - Both are programs
-- R is the programming language/envrionment
+- R is the programming language/environment
 - RStudio is an IDE (integrated development environment) by Posit
 
 ::: {layout="[-2, 13,-4,10,-3]" layout-valign="center"}
@@ -285,7 +285,7 @@ Keep it relatively simple for now `r emo::ji("wink")`
 ### R & Positron
 
 - Both are programs
-- R is the programming language/envrionment
+- R is the programming language/environment
 - Positron is a *newer* IDE (integrated development environment) by Posit
 
 ::: {layout="[-2, 13,-4,10,-3]" layout-valign="center"}
@@ -370,7 +370,7 @@ A [link](https://cran.r-project.org/) to R
 
 - **HTML** is a language for making websites
   - Can be used directly in `.qmd`/`.Rmd` files if you plan to output to HTML
-  - E.g., can use `<br\>` for a line **br**eak
+  - E.g., can use `<br/>` for a line **br**eak
 
 :::
 
@@ -434,8 +434,8 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 :::{.column width="45%"}
 
 - `fig-width` width of figure in inches
-- `fig-asp` aspect of the figure (1 = square)
-   (i.e. height = width * aspect)
+- `fig-asp` aspect ratio of the figure (1 = square)
+   (i.e. height = width * aspect ratio)
 - `fig-alt` **Alt**ernative text for screen readers helping those who can't see the figure 
    (should be descriptive, not the same as a caption)[^1] 
 - `fig-cap` Figure caption 
@@ -501,7 +501,7 @@ Consider the options we learned
 
 Anything you'd like to add?
 
-Consider `code-fold: true` or `toc: false`
+Experiment with `code-fold: true` or `toc: false`
 
 # Some Final Thoughts
 
@@ -522,7 +522,7 @@ Consider `code-fold: true` or `toc: false`
 :::{.spacer .fragment  fragment-index=2}
 - Easier to write narrative
 - Define code
-    - Use ` ```{r} ` and ` ``` `to define code blocks
+    - Use ` ```{r} ` and ` ``` ` to define code blocks
 - Define options with `#|`
     - *Inside* a code block
 - Render button or `quarto_render()` function
@@ -547,11 +547,11 @@ Consider `code-fold: true` or `toc: false`
     - Use `#'` to define markdown
 - Define options with `#|`
     - Above a code block
-    - Use empty `#|` to split code chunks
+    - Use `#| label: my-chunk` to split code chunks (just adds a label)
 - `quarto_render()`[^2] function
 :::
 
-[^2]: If you use Rmarkdown syntax instead of Quarto, you can use the "Compile Report" button
+[^2]: If you use R Markdown syntax instead of Quarto, you can use the "Compile Report" button
 
 :::
 ::::
@@ -603,7 +603,7 @@ quarto::quarto_render(
 :::
 :::
 
-:::{.column width="50%}
+:::{.column width=50%}
 
 ### Spinning
 
@@ -670,7 +670,7 @@ my_data <- read_csv(here("Data/my_data.csv"))
 
 ![](figures/here.png){.absolute right=-5% bottom=0 width=58% fig-alt="A cartoon showing two paths side-by-side. On the left is a scary spooky forest, with spiderwebs and gnarled trees, with file paths written on the branches like '~/mmm/nope.csv' and 'setwd('/haha/good/luck/')', with a scared looking cute fuzzy monster running out of it. On the right is a bright, colorful path with flowers, rainbow and sunshine, with signs saying 'here!' and 'it’s all right here!' A monster facing away from us in a backpack and walking stick is looking toward the right path. Stylized text reads 'here: find your path.'"}
 
-[Artwork by [@allison_horst](https://twitter.com/allison_horst)]{.footnote}
+[Artwork by [Allison Horst](https://allisonhorst.com)]{.footnote}
 
 # Taking it to the next level
 

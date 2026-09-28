@@ -17,7 +17,7 @@ different ways of creating reports from scripts and how to customize the output
 to maximize beauty as well as reproducibility. You will have the opportunity to
 learn and practice, and will go home with a collection of resources to help you
 along your journey. Example scripts to work with will be available, but best is
-to bring your own..
+to bring your own.
 
 This GitHub repository holds all the information relating to our workshop.
 
@@ -51,15 +51,15 @@ This GitHub repository holds all the information relating to our workshop.
 >
 > 1. If you don't understand the question, install RStudio
 > 2. If you're newish to R and programming, install RStudio
-> 3. If you're familiar with programming and what to explore a more complex but
+> 3. If you're familiar with programming and want to explore a more complex but
 >    feature rich IDE, install Positron (but this workshop may not be the best
->    time to experiement, so give yourself time to get familiar with it!)
+>    time to experiment, so give yourself time to get familiar with it!)
 > 4. If you already use Positron, just make sure it's up-to-date ;)
 
 - [Install R](https://muug.ca/mirror/cran/)
 
-- [Install RStudio](https://www.rstudio.com/products/rstudio/download/) or
-  [Positron](https://positron.posit.co/)
+- [Install RStudio](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
+  or [Positron](https://positron.posit.co/)
   - (**update RStudio/Positron** to the newest version, if it's already
     installed)
 
@@ -88,14 +88,14 @@ This GitHub repository holds all the information relating to our workshop.
 Are you an R educator? Do you want to give this workshop?
 
 Go for it! I would love for you to adapt this material for your own use. It's
-licensed as GPLv3 which means you can free to copy, adapt, and use this
+licensed as GPLv3 which means you are free to copy, adapt, and use this
 material, but any modifications you make must also be shared under the GPLv3
 licence.
 
 Essentially if you use/adapt this material, I hope that you'll pay it forward
 and share with others.
 
-I'd love to hear if you use this, how the workshop when (what worked, what
+I'd love to hear if you use this, how the workshop went (what worked, what
 didn't, and how you made changes), but that's not a requirement.
 
 Have fun!

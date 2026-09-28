@@ -12,9 +12,9 @@ Teaching materials for a 2-hour workshop, "Introduction to Quarto for
 Reproducibility" (SCO-SOC Virtual Meeting). It is not a software project: there
 are no tests or linters. The main deliverable is a Quarto revealjs slide deck,
 `index.qmd`. The rendered output (`index.html` and `index_files/`) is committed
-and served at https://steffilazerte.ca/intro_to_quarto/, so after rendering,
-commit the regenerated output together with the `.qmd` changes. The README links
-participants to the slides, PDFs, and example files at that URL.
+and served at https://steffilazerte.ca/workshop-intro-to-quarto/, so after
+rendering, commit the regenerated output together with the `.qmd` changes. The
+README links participants to the slides, PDFs, and example files at that URL.
 
 Content is licensed GPLv3 (`LICENSE.md`).
 
@@ -68,7 +68,7 @@ script:
 Before starting, check that Docker, Ghostscript and the Quarto CLI are
 installed.
 
-## Slide deck structure
+## File structure
 
 - The `index.qmd` front matter configures revealjs. It uses
   `theme: [default, styles.scss]` and replaces the default title slide with the
@@ -86,8 +86,9 @@ installed.
   chunks are only displayed as examples and are not labelled.
 - Images are in `figures/`. The Font Awesome icons come from the local extension
   in `_extensions/`.
-- `schedule.md` gives the planned timing of each section. Keep it in mind when
-  adding or removing content.
+- `RUNNING.md` gives the planned timing of each section. Keep it in mind when
+  adding or removing content. It also holds the email template sent to
+  participants the week before the workshop.
 
 ## Example files for participants
 
@@ -96,13 +97,17 @@ download. They are not part of the Quarto project render. Each one shows the
 same analysis in a different way: `example.qmd` is a Quarto document, and
 `example_spin.R` is an R script with `#'` roxygen-style comments that
 `quarto::quarto_render()` converts. Each file contains its own render command in
-an `eval: false` chunk. Keep these two files in sync in terms of content.
+an `eval: false` chunk. Keep these two files in sync in terms of content: the
+same sections, text, chunks and options, in the same order.
 
 Both files use Quarto-style `#|` chunk options (not the older `#+` spin syntax).
-Note that RStudio's Compile Report button still renders R scripts through
-`knitr::spin()` and R Markdown, not Quarto (see rstudio/rstudio#14477). So
-Quarto-only options in `example_spin.R`, such as `format:` and `toc:`, apply
-only when it is rendered with `quarto_render()` or from Positron.
+In `example_spin.R`, a `#|` line with an option starts a new chunk, but an empty
+`#|` line does not (knitr 1.52). To split two blocks of code into separate
+chunks, give the second one an option, such as `#| label:`. Note that RStudio's
+Compile Report button still renders R scripts through `knitr::spin()` and R
+Markdown, not Quarto (see rstudio/rstudio#14477). So Quarto-only options in
+`example_spin.R`, such as `format:` and `toc:`, apply only when it is rendered
+with `quarto_render()` or from Positron.
 
 ## Other notes
 

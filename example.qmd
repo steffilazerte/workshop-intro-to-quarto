@@ -3,6 +3,7 @@ title: "My great analysis"
 format: html
 date: today
 toc: true
+embed-resources: true
 ---
 
 ### Render report
@@ -10,12 +11,15 @@ This is the code you can use to render this report. This will automatically rena
 Note the `eval: false` which makes sure that rendering this report doesn't run the code to render the report (infinite loop!)
 ```{r}
 #| eval: false
-quarto::quarto_render(input = "example.qmd", output_file = paste0("example_", Sys.Date(), ".html"))
+quarto::quarto_render(
+  input = "example.qmd", 
+  output_file = paste0("example_", Sys.Date(), ".html")
+)
 ```
 
 ## Setup
 We can use `message: false` to suppress start up package messages (if you like).
-```{r packages}
+```{r}
 #| message: false
 library(tidyverse)
 ```
@@ -56,16 +60,21 @@ plot(m)
 
 Data available for download via CSV/Excel buttons (do not use this as data source, but as confirmation and for posterity)
 
+You can use the HTML `<details><summary></summary></details>` tags to hide content under a button.
+
+<details>
+  <summary>Show data</summary>
+
 ```{r}
 DT::datatable(mtcars, extensions = 'Buttons',
               options = list(dom = 'Bfrtip', buttons = c('csv', 'excel')))
 ```
 
+</details>
+
 ### Packages & Session Info
 
 Make sure you [cite](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/) important packages in your manuscripts.
-
-You can use the HTML `<details><summary></summary></details>` tags to hide content under a button.
 
 <details>
   <summary>Show packages</summary>

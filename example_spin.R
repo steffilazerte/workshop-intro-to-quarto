@@ -3,6 +3,7 @@
 #' format: html
 #' date: today
 #' toc: true
+#' embed-resources: true
 #' ---
 #'
 #' ### Render report
@@ -20,6 +21,7 @@ quarto::quarto_render(
 )
 
 #' ## Setup
+#' We can use `message: false` to suppress start up package messages (if you like).
 
 #| message: false
 library(tidyverse)
@@ -32,40 +34,55 @@ ggplot(data = mtcars, aes(x = factor(cyl), y = mpg)) +
   geom_point()
 
 #' ## Analysis
+#'
+#' We can use tabs to organize content!
+#'
+#' :::{.panel-tabset}
+#'
+#' ### Main results
 
 m <- lm(mpg ~ factor(cyl), data = mtcars)
 summary(m)
 
+#' ### Model checks
 
+plot(m)
+
+#' :::
+#'
 #' ## Reproducibility
-
+#'
 #' ### Data
 #'
 #' Data available for download via CSV/Excel buttons (do not use this as data source,
 #' but as confirmation and for posterity)
-
+#'
+#' You can use the HTML `<details><summary></summary></details>` tags to hide
+#' content under a button.
+#'
 #' <details>
 #'   <summary>Show data</summary>
+
 DT::datatable(
   mtcars,
   extensions = 'Buttons',
   options = list(dom = 'Bfrtip', buttons = c('csv', 'excel'))
 )
-#' </details>
 
+#' </details>
+#'
 #' ### Packages & Session Info
 #'
-#' Make sure you [cite](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/) important packages in your manuscripts
-
+#' Make sure you [cite](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/) important packages in your manuscripts.
+#'
 #' <details>
 #'   <summary>Show packages</summary>
-#'
-#| results: asis
 
+#| results: asis
 report::report_packages(prefix = "- ")
 report::cite_packages(prefix = "- ")
 
-#+
+#| label: session-info
 devtools::session_info()
 
 #' </details>
