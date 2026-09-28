@@ -72,8 +72,8 @@ You can use the HTML `<details><summary></summary></details>` tags to hide conte
 
 ```{r}
 #| results: asis
-report::report_packages()
-report::cite_packages()
+report::report_packages(prefix = "- ")
+report::cite_packages(prefix = "- ")
 ```
 
 

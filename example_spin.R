@@ -4,15 +4,24 @@
 #' date: today
 #' toc: true
 #' ---
-
+#'
 #' ### Render report
-#+ eval=FALSE
-knitr::spin("example_spin.R", knit = FALSE)
-quarto::quarto_render(input = "example_spin.Rmd", output_file = paste0("example_spin_", Sys.Date(), ".html"))
+#' Quarto can render R scripts directly.
+#'
+#' This is the code you can use to render this report.
+#' This will automatically rename it with today's date.
+#' Note the `eval: false` which makes sure that rendering this report doesn't
+#' run the code to render the report (infinite loop!)
+
+#| eval: false
+quarto::quarto_render(
+  input = "example_spin.R",
+  output_file = paste0("example_spin_", Sys.Date(), ".html")
+)
 
 #' ## Setup
 
-#+ message=FALSE
+#| message: false
 library(tidyverse)
 
 #' ## Data Exploration
@@ -37,8 +46,11 @@ summary(m)
 
 #' <details>
 #'   <summary>Show data</summary>
-DT::datatable(mtcars, extensions = 'Buttons',
-              options = list(dom = 'Bfrtip', buttons = c('csv', 'excel')))
+DT::datatable(
+  mtcars,
+  extensions = 'Buttons',
+  options = list(dom = 'Bfrtip', buttons = c('csv', 'excel'))
+)
 #' </details>
 
 #' ### Packages & Session Info
@@ -48,12 +60,12 @@ DT::datatable(mtcars, extensions = 'Buttons',
 #' <details>
 #'   <summary>Show packages</summary>
 #'
-#+ results="asis"
-report::report_packages()
-report::cite_packages()
+#| results: asis
 
+report::report_packages(prefix = "- ")
+report::cite_packages(prefix = "- ")
+
+#+
 devtools::session_info()
 
 #' </details>
-
-
