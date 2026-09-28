@@ -103,7 +103,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-fdaf65e2b56df1f9565d1fdeea487aaf.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-49cc3f37e6809553947377d9c5795800.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -282,7 +282,12 @@
 <li class="fragment">Keep track of your code <em>and</em> results</li>
 <li class="fragment">Share your work</li>
 <li class="fragment">Ensure reproducibility</li>
-<li class="fragment">Be nice to your future self (<em>What did I do again? What were the results?</em>)</li>
+<li class="fragment">Be nice to your future self
+<ul>
+<li class="fragment"><em>What did I do again?</em></li>
+<li class="fragment"><em>What were the results?</em></li>
+<li class="fragment"><em>Did I remember to remove partial observations?</em></li>
+</ul></li>
 </ul>
 <div class="fragment">
 <blockquote>
@@ -322,14 +327,26 @@
 <p>This is my <strong>great</strong> study…. I used these packages:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-label="1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
 </div>
 <h3 class="spacer" id="loading-data">Loading data</h3>
 <p>These are the datasets I used</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb3-2"><a href="" aria-label="2"></a>  <span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span></span>
-<span id="cb3-3"><a href="" aria-label="3"></a>)</span>
-<span id="cb3-4"><a href="" aria-label="4"></a>my_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb4-2"><a href="" aria-label="2"></a>  <span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span></span>
+<span id="cb4-3"><a href="" aria-label="3"></a>)</span>
+<span id="cb4-4"><a href="" aria-label="4"></a>my_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 3
    urbanization songs calls
@@ -349,12 +366,12 @@
 </div>
 <p>This is what it looks like</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="" aria-label="2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="" aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="" aria-label="2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="576"></p>
+<p><img data-src="index_files/figure-revealjs/plot-songs-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -363,23 +380,23 @@
 </section>
 <section id="for-another-example" class="slide level2">
 <h2>For another example…</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="" aria-label="1"></a><span class="fu">### Visual of Thresholds Calculations</span></span>
-<span id="cb6-2"><a href="" aria-label="2"></a></span>
-<span id="cb6-3"><a href="" aria-label="3"></a><span class="at">&gt; - Pink ribbon = 99% Confidence interval of latitudes predicted from GAM</span></span>
-<span id="cb6-4"><a href="" aria-label="4"></a><span class="at">&gt; - Black lines in the ribbon are the upper and lower limit, the middle</span></span>
-<span id="cb6-5"><a href="" aria-label="5"></a><span class="at">line is the predicted latitude (from GAM model)</span></span>
-<span id="cb6-6"><a href="" aria-label="6"></a><span class="at">&gt; - Transparent blue rectangles indicate the date ranges used to establish</span></span>
-<span id="cb6-7"><a href="" aria-label="7"></a><span class="at">the latitudes just after and just before migration.</span></span>
-<span id="cb6-8"><a href="" aria-label="8"></a><span class="at">&gt; - Blue horizontal lines represents the latitude threshold for spring </span></span>
-<span id="cb6-9"><a href="" aria-label="9"></a><span class="at">    migration (begin/end)</span></span>
-<span id="cb6-10"><a href="" aria-label="10"></a><span class="at">&gt; - Orange horzontal lines represents the latitude threshold for fall </span></span>
-<span id="cb6-11"><a href="" aria-label="11"></a><span class="at">    migration (begin/end)</span></span>
-<span id="cb6-12"><a href="" aria-label="12"></a></span>
-<span id="cb6-13"><a href="" aria-label="13"></a><span class="in">```{r}</span></span>
-<span id="cb6-14"><a href="" aria-label="14"></a><span class="co">#| fig-asp: 1 </span></span>
-<span id="cb6-15"><a href="" aria-label="15"></a><span class="co">#| fig-width: 15</span></span>
-<span id="cb6-16"><a href="" aria-label="16"></a><span class="fu">wrap_plots</span>(g) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb6-17"><a href="" aria-label="17"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="" aria-label="1"></a><span class="fu">### Visual of Thresholds Calculations</span></span>
+<span id="cb7-2"><a href="" aria-label="2"></a></span>
+<span id="cb7-3"><a href="" aria-label="3"></a><span class="at">&gt; - Pink ribbon = 99% Confidence interval of latitudes predicted from GAM</span></span>
+<span id="cb7-4"><a href="" aria-label="4"></a><span class="at">&gt; - Black lines in the ribbon are the upper and lower limit, the middle</span></span>
+<span id="cb7-5"><a href="" aria-label="5"></a><span class="at">line is the predicted latitude (from GAM model)</span></span>
+<span id="cb7-6"><a href="" aria-label="6"></a><span class="at">&gt; - Transparent blue rectangles indicate the date ranges used to establish</span></span>
+<span id="cb7-7"><a href="" aria-label="7"></a><span class="at">the latitudes just after and just before migration.</span></span>
+<span id="cb7-8"><a href="" aria-label="8"></a><span class="at">&gt; - Blue horizontal lines represents the latitude threshold for spring </span></span>
+<span id="cb7-9"><a href="" aria-label="9"></a><span class="at">    migration (begin/end)</span></span>
+<span id="cb7-10"><a href="" aria-label="10"></a><span class="at">&gt; - Orange horzontal lines represents the latitude threshold for fall </span></span>
+<span id="cb7-11"><a href="" aria-label="11"></a><span class="at">    migration (begin/end)</span></span>
+<span id="cb7-12"><a href="" aria-label="12"></a></span>
+<span id="cb7-13"><a href="" aria-label="13"></a><span class="in">```{r}</span></span>
+<span id="cb7-14"><a href="" aria-label="14"></a><span class="co">#| fig-asp: 1 </span></span>
+<span id="cb7-15"><a href="" aria-label="15"></a><span class="co">#| fig-width: 15</span></span>
+<span id="cb7-16"><a href="" aria-label="16"></a><span class="fu">wrap_plots</span>(g) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb7-17"><a href="" aria-label="17"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="small spacer">
 <p>(<em>Plus a bunch of other options</em>)</p>
 </div>
@@ -397,28 +414,28 @@
 <h2>Not an R script…</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-code-line-numbers="|5,12-13,20-21|4,6,11,14,18,22|1-2,8-9,16|19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="" aria-label="1"></a><span class="fu">## Setup</span></span>
-<span id="cb7-2"><a href="" aria-label="2"></a>This is my **great** study.... I used these packages:</span>
-<span id="cb7-3"><a href="" aria-label="3"></a></span>
-<span id="cb7-4"><a href="" aria-label="4"></a><span class="in">```{r}</span></span>
-<span id="cb7-5"><a href="" aria-label="5"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-6"><a href="" aria-label="6"></a><span class="in">```</span></span>
-<span id="cb7-7"><a href="" aria-label="7"></a></span>
-<span id="cb7-8"><a href="" aria-label="8"></a><span class="fu">## Loading data</span></span>
-<span id="cb7-9"><a href="" aria-label="9"></a>These are the datasets I used</span>
-<span id="cb7-10"><a href="" aria-label="10"></a></span>
-<span id="cb7-11"><a href="" aria-label="11"></a><span class="in">```{r}</span></span>
-<span id="cb7-12"><a href="" aria-label="12"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span>)</span>
-<span id="cb7-13"><a href="" aria-label="13"></a>my_data</span>
-<span id="cb7-14"><a href="" aria-label="14"></a><span class="in">```</span></span>
-<span id="cb7-15"><a href="" aria-label="15"></a></span>
-<span id="cb7-16"><a href="" aria-label="16"></a>This is what it looks like</span>
-<span id="cb7-17"><a href="" aria-label="17"></a></span>
-<span id="cb7-18"><a href="" aria-label="18"></a><span class="in">```{r}</span></span>
-<span id="cb7-19"><a href="" aria-label="19"></a><span class="co">#| fig-width: 6</span></span>
-<span id="cb7-20"><a href="" aria-label="20"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
-<span id="cb7-21"><a href="" aria-label="21"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb7-22"><a href="" aria-label="22"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-code-line-numbers="|5,12-13,20-21|4,6,11,14,18,22|1-2,8-9,16|19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">## Setup</span></span>
+<span id="cb8-2"><a href="" aria-label="2"></a>This is my **great** study.... I used these packages:</span>
+<span id="cb8-3"><a href="" aria-label="3"></a></span>
+<span id="cb8-4"><a href="" aria-label="4"></a><span class="in">```{r}</span></span>
+<span id="cb8-5"><a href="" aria-label="5"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-6"><a href="" aria-label="6"></a><span class="in">```</span></span>
+<span id="cb8-7"><a href="" aria-label="7"></a></span>
+<span id="cb8-8"><a href="" aria-label="8"></a><span class="fu">## Loading data</span></span>
+<span id="cb8-9"><a href="" aria-label="9"></a>These are the datasets I used</span>
+<span id="cb8-10"><a href="" aria-label="10"></a></span>
+<span id="cb8-11"><a href="" aria-label="11"></a><span class="in">```{r}</span></span>
+<span id="cb8-12"><a href="" aria-label="12"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span>)</span>
+<span id="cb8-13"><a href="" aria-label="13"></a>my_data</span>
+<span id="cb8-14"><a href="" aria-label="14"></a><span class="in">```</span></span>
+<span id="cb8-15"><a href="" aria-label="15"></a></span>
+<span id="cb8-16"><a href="" aria-label="16"></a>This is what it looks like</span>
+<span id="cb8-17"><a href="" aria-label="17"></a></span>
+<span id="cb8-18"><a href="" aria-label="18"></a><span class="in">```{r}</span></span>
+<span id="cb8-19"><a href="" aria-label="19"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb8-20"><a href="" aria-label="20"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="" aria-label="21"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb8-22"><a href="" aria-label="22"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:40%;">
 <h3 id="four-things-going-on">Four things going on…</h3>
 <ol type="1">
@@ -466,7 +483,7 @@ it’s an <strong>R Markdown (<code>.Rmd</code>)</strong> or<br>
 <ul>
 <li>Both are programs</li>
 <li>R is the programming language/envrionment</li>
-<li>RStudio is an IDE (integrated development environment)</li>
+<li>RStudio is an IDE (integrated development environment) by Posit</li>
 </ul>
 <div class="quarto-layout-panel" data-layout="[-2, 13,-4,10,-3]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -500,6 +517,44 @@ it’s an <strong>R Markdown (<code>.Rmd</code>)</strong> or<br>
 </section>
 <section id="terminology-1" class="slide level2">
 <h2>Terminology</h2>
+<h3 id="r-positron">R &amp; Positron</h3>
+<ul>
+<li>Both are programs</li>
+<li>R is the programming language/envrionment</li>
+<li>Positron is a <em>newer</em> IDE (integrated development environment) by Posit</li>
+</ul>
+<div class="quarto-layout-panel" data-layout="[-2, 13,-4,10,-3]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 6.3%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 40.6%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/R.png" alt=""></p>
+<figcaption>R</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 31.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/positron-logo.png" alt=""></p>
+<figcaption>Positron</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 9.4%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+</section>
+<section id="terminology-2" class="slide level2">
+<h2>Terminology</h2>
 <h3 id="markdown">Markdown</h3>
 <ul>
 <li>A text markup language</li>
@@ -510,11 +565,11 @@ it’s an <strong>R Markdown (<code>.Rmd</code>)</strong> or<br>
 <div class="column" style="width:60%;">
 <p><span class="spacer"><strong>For example, the following…</strong></span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">### My heading</span></span>
-<span id="cb8-2"><a href="" aria-label="2"></a></span>
-<span id="cb8-3"><a href="" aria-label="3"></a>**Hi!** This is in *italics*</span>
-<span id="cb8-4"><a href="" aria-label="4"></a></span>
-<span id="cb8-5"><a href="" aria-label="5"></a>A <span class="co">[</span><span class="ot">link</span><span class="co">](https://cran.r-project.org/)</span> to R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="" aria-label="1"></a><span class="fu">### My heading</span></span>
+<span id="cb9-2"><a href="" aria-label="2"></a></span>
+<span id="cb9-3"><a href="" aria-label="3"></a>**Hi!** This is in *italics*</span>
+<span id="cb9-4"><a href="" aria-label="4"></a></span>
+<span id="cb9-5"><a href="" aria-label="5"></a>A <span class="co">[</span><span class="ot">link</span><span class="co">](https://cran.r-project.org/)</span> to R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p><span class="spacer"><strong>Becomes…</strong></span></p>
@@ -523,13 +578,14 @@ it’s an <strong>R Markdown (<code>.Rmd</code>)</strong> or<br>
 <p>A <a href="https://cran.r-project.org/">link</a> to R</p>
 </div></div>
 </section>
-<section id="terminology-2" class="slide level2">
+<section id="terminology-3" class="slide level2">
 <h2>Terminology</h2>
 <h3 id="r-markdown-quarto-knitr-and-pandoc">R Markdown, Quarto, knitr, and Pandoc</h3>
 <ul>
 <li><strong>R Markdown(<code>.Rmd</code>)</strong> and <strong>Quarto (<code>.qmd</code>)</strong> files are a <em>mix</em> of Markdown <em>and</em> R code</li>
 <li><strong>knitr</strong> is an R package which evaluates R code and returns the output as a Markdown file</li>
 <li><strong>Pandoc</strong> is a separate (independent) program that converts Markdown to a variety of formats</li>
+<li><strong>Quarto</strong> manages the pipeline</li>
 </ul>
 
 <img data-src="https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png" alt="How Quarto works: qmd to knitr to md to pandoc to multiple formats including pdf, HTML and Microsoft Word" class="r-stretch"><div class="fragment">
@@ -539,7 +595,7 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 </blockquote>
 </div>
 </section>
-<section id="terminology-3" class="slide level2 space-list">
+<section id="terminology-4" class="slide level2 space-list">
 <h2>Terminology</h2>
 <h3 id="yaml-html-cssscss">YAML, HTML, CSS/SCSS</h3>
 <div class="fragment">
@@ -573,13 +629,13 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <h2>Some options</h2>
 <h3 id="document-level-options---yaml-block">Document level options - YAML block</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="" aria-label="1"></a><span class="pp">---</span></span>
-<span id="cb9-2"><a href="" aria-label="2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My great analysis"</span></span>
-<span id="cb9-3"><a href="" aria-label="3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb9-4"><a href="" aria-label="4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
-<span id="cb9-5"><a href="" aria-label="5"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb9-6"><a href="" aria-label="6"></a><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb9-7"><a href="" aria-label="7"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="" aria-label="1"></a><span class="pp">---</span></span>
+<span id="cb10-2"><a href="" aria-label="2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My great analysis"</span></span>
+<span id="cb10-3"><a href="" aria-label="3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb10-4"><a href="" aria-label="4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
+<span id="cb10-5"><a href="" aria-label="5"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb10-6"><a href="" aria-label="6"></a><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb10-7"><a href="" aria-label="7"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><code>date: today</code> to include today’s date</li>
@@ -595,20 +651,20 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <h3 id="chunk-level-options---yaml-notation">Chunk level options - YAML notation</h3>
 <div class="columns">
 <div class="column small" style="width:55%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="" aria-label="1"></a><span class="in">```{r}</span></span>
-<span id="cb10-2"><a href="" aria-label="2"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb10-3"><a href="" aria-label="3"></a><span class="co">#| fig-asp: 0.5</span></span>
-<span id="cb10-4"><a href="" aria-label="4"></a><span class="co">#| fig-alt: |</span></span>
-<span id="cb10-5"><a href="" aria-label="5"></a><span class="co">#|   A scatterplot in black and white showing degree of </span></span>
-<span id="cb10-6"><a href="" aria-label="6"></a><span class="co">#|   urbanization on the x-axis and number of songs on </span></span>
-<span id="cb10-7"><a href="" aria-label="7"></a><span class="co">#|   the y-axis with no appreciable pattern in the data.</span></span>
-<span id="cb10-8"><a href="" aria-label="8"></a><span class="co">#| fig-cap: |</span></span>
-<span id="cb10-9"><a href="" aria-label="9"></a><span class="co">#|   The relationship between urbanization and the number</span></span>
-<span id="cb10-10"><a href="" aria-label="10"></a><span class="co">#|   of songs in mountain chickadee dawn choruses.</span></span>
-<span id="cb10-11"><a href="" aria-label="11"></a></span>
-<span id="cb10-12"><a href="" aria-label="12"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
-<span id="cb10-13"><a href="" aria-label="13"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb10-14"><a href="" aria-label="14"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="" aria-label="1"></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a href="" aria-label="2"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb11-3"><a href="" aria-label="3"></a><span class="co">#| fig-asp: 0.5</span></span>
+<span id="cb11-4"><a href="" aria-label="4"></a><span class="co">#| fig-alt: |</span></span>
+<span id="cb11-5"><a href="" aria-label="5"></a><span class="co">#|   A scatterplot in black and white showing degree of </span></span>
+<span id="cb11-6"><a href="" aria-label="6"></a><span class="co">#|   urbanization on the x-axis and number of songs on </span></span>
+<span id="cb11-7"><a href="" aria-label="7"></a><span class="co">#|   the y-axis with no appreciable pattern in the data.</span></span>
+<span id="cb11-8"><a href="" aria-label="8"></a><span class="co">#| fig-cap: |</span></span>
+<span id="cb11-9"><a href="" aria-label="9"></a><span class="co">#|   The relationship between urbanization and the number</span></span>
+<span id="cb11-10"><a href="" aria-label="10"></a><span class="co">#|   of songs in mountain chickadee dawn choruses.</span></span>
+<span id="cb11-11"><a href="" aria-label="11"></a></span>
+<span id="cb11-12"><a href="" aria-label="12"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
+<span id="cb11-13"><a href="" aria-label="13"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb11-14"><a href="" aria-label="14"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:45%;">
 <ul>
 <li><code>fig-width</code> width of figure in inches</li>
@@ -621,11 +677,11 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <section id="gives" class="slide level2">
 <h2>Gives…</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="" aria-label="2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="" aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="" aria-label="2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" alt="A scatterplot in black and white showing degree of urbanization on the x-axis and number of songs on the y-axis with no appreciable pattern in the data. " width="960" class="r-stretch quarto-figure-center"><p class="caption">The relationship between urbanization and the number of songs in mountain chickadee dawn choruses.</p></section>
+<img data-src="index_files/figure-revealjs/plot-songs-captioned-1.png" alt="A scatterplot in black and white showing degree of urbanization on the x-axis and number of songs on the y-axis with no appreciable pattern in the data. " width="960" class="r-stretch quarto-figure-center"><p class="caption">The relationship between urbanization and the number of songs in mountain chickadee dawn choruses.</p></section>
 <section id="enhancing-reproducibility" class="slide level2">
 <h2>Enhancing reproducibility</h2>
 <ul>
@@ -640,8 +696,8 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <li>Embed data directly (for smaller datasets) using <a href="https://rstudio.github.io/DT/">DT</a> package</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="" aria-label="1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(mtcars, <span class="at">extensions =</span> <span class="st">'Buttons'</span>,</span>
-<span id="cb12-2"><a href="" aria-label="2"></a>              <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">'Bfrtip'</span>, <span class="at">buttons =</span> <span class="fu">c</span>(<span class="st">'csv'</span>, <span class="st">'excel'</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="" aria-label="1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(mtcars, <span class="at">extensions =</span> <span class="st">'Buttons'</span>,</span>
+<span id="cb13-2"><a href="" aria-label="2"></a>              <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">'Bfrtip'</span>, <span class="at">buttons =</span> <span class="fu">c</span>(<span class="st">'csv'</span>, <span class="st">'excel'</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section id="cite-the-packages" class="title-slide slide level1 center">
@@ -669,7 +725,7 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <h2>Rendering vs.&nbsp;Spinning</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="rendering-renderknit-button">Rendering <span class="small">(Render/Knit button)</span></h3>
+<h3 id="rendering">Rendering</h3>
 <div class="hide spacer">
 <table class="caption-top">
 <colgroup>
@@ -692,13 +748,20 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 </div>
 <div class="spacer fragment" data-fragment-index="2">
 <ul>
-<li>Good for lots of text</li>
-<li>Better option control</li>
+<li>Easier to write narrative</li>
+<li>Define code
+<ul>
 <li>Use <code>```{r}</code> and <code>```</code>to define code blocks</li>
+</ul></li>
+<li>Define options with <code>#|</code>
+<ul>
+<li><em>Inside</em> a code block</li>
+</ul></li>
+<li>Render button or <code>quarto_render()</code> function</li>
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<h3 id="spinning-knit-button">Spinning <span class="small">(Knit button)</span></h3>
+<h3 id="spinning">Spinning</h3>
 <div class="hide spacer">
 <table class="caption-top">
 <colgroup>
@@ -722,79 +785,82 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <div class="spacer fragment" data-fragment-index="2">
 <ul>
 <li>Easier to code</li>
-<li>Use <code>#'</code> to define markdown</li>
-<li>Use <code>#+</code> to define chunk options
+<li>Define text
 <ul>
-<li>Use Rmarkdown option style</li>
-<li>i.e., <code>error=FALSE</code> not <code>error: false</code></li>
+<li>Use <code>#'</code> to define markdown</li>
 </ul></li>
+<li>Define options with <code>#|</code>
+<ul>
+<li>Above a code block</li>
+<li>Use empty <code>#|</code> to split code chunks</li>
+</ul></li>
+<li><code>quarto_render()</code><sup>1</sup> function</li>
 </ul>
 </div>
 </div></div>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>If you use Rmarkdown syntax instead of Quarto, you can use the “Compile Report” button</p></li></ol></aside></section>
 <section id="rendering-vs.-spinning-1" class="slide level2">
 <h2>Rendering vs.&nbsp;Spinning</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="rendering-renderknit-button-1">Rendering <span class="small">(Render/Knit button)</span></h3>
+<h3 id="rendering-1">Rendering</h3>
 <div class="small">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="" aria-label="1"></a><span class="fu">## Setup</span></span>
-<span id="cb13-2"><a href="" aria-label="2"></a>This is my **great** study.... I used these packages:</span>
-<span id="cb13-3"><a href="" aria-label="3"></a></span>
-<span id="cb13-4"><a href="" aria-label="4"></a><span class="in">```{r}</span></span>
-<span id="cb13-5"><a href="" aria-label="5"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-6"><a href="" aria-label="6"></a><span class="in">```</span></span>
-<span id="cb13-7"><a href="" aria-label="7"></a></span>
-<span id="cb13-8"><a href="" aria-label="8"></a><span class="fu">## Loading data</span></span>
-<span id="cb13-9"><a href="" aria-label="9"></a>These are the datasets I used</span>
-<span id="cb13-10"><a href="" aria-label="10"></a></span>
-<span id="cb13-11"><a href="" aria-label="11"></a><span class="in">```{r}</span></span>
-<span id="cb13-12"><a href="" aria-label="12"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span>)</span>
-<span id="cb13-13"><a href="" aria-label="13"></a>my_data</span>
-<span id="cb13-14"><a href="" aria-label="14"></a><span class="in">```</span></span>
-<span id="cb13-15"><a href="" aria-label="15"></a></span>
-<span id="cb13-16"><a href="" aria-label="16"></a>This is what it looks like</span>
-<span id="cb13-17"><a href="" aria-label="17"></a></span>
-<span id="cb13-18"><a href="" aria-label="18"></a><span class="in">```{r}</span></span>
-<span id="cb13-19"><a href="" aria-label="19"></a><span class="co">#| fig-width: 6</span></span>
-<span id="cb13-20"><a href="" aria-label="20"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
-<span id="cb13-21"><a href="" aria-label="21"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb13-22"><a href="" aria-label="22"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Or render with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="" aria-label="1"></a><span class="fu">## Setup</span></span>
+<span id="cb14-2"><a href="" aria-label="2"></a>This is my **great** study.... I used these packages:</span>
+<span id="cb14-3"><a href="" aria-label="3"></a></span>
+<span id="cb14-4"><a href="" aria-label="4"></a><span class="in">```{r}</span></span>
+<span id="cb14-5"><a href="" aria-label="5"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-6"><a href="" aria-label="6"></a><span class="in">```</span></span>
+<span id="cb14-7"><a href="" aria-label="7"></a></span>
+<span id="cb14-8"><a href="" aria-label="8"></a><span class="fu">## Loading data</span></span>
+<span id="cb14-9"><a href="" aria-label="9"></a>These are the datasets I used</span>
+<span id="cb14-10"><a href="" aria-label="10"></a></span>
+<span id="cb14-11"><a href="" aria-label="11"></a><span class="in">```{r}</span></span>
+<span id="cb14-12"><a href="" aria-label="12"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span>)</span>
+<span id="cb14-13"><a href="" aria-label="13"></a>my_data</span>
+<span id="cb14-14"><a href="" aria-label="14"></a><span class="in">```</span></span>
+<span id="cb14-15"><a href="" aria-label="15"></a></span>
+<span id="cb14-16"><a href="" aria-label="16"></a>This is what it looks like</span>
+<span id="cb14-17"><a href="" aria-label="17"></a></span>
+<span id="cb14-18"><a href="" aria-label="18"></a><span class="in">```{r}</span></span>
+<span id="cb14-19"><a href="" aria-label="19"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb14-20"><a href="" aria-label="20"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
+<span id="cb14-21"><a href="" aria-label="21"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb14-22"><a href="" aria-label="22"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use “Render” button or render with:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="" aria-label="1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb14-2"><a href="" aria-label="2"></a>  <span class="at">input =</span> <span class="st">"example.qmd"</span>, </span>
-<span id="cb14-3"><a href="" aria-label="3"></a>  <span class="at">output_file =</span> <span class="fu">paste0</span>(<span class="st">"example_"</span>, <span class="fu">Sys.Date</span>(), <span class="st">".html"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="" aria-label="1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb15-2"><a href="" aria-label="2"></a>  <span class="at">input =</span> <span class="st">"example.qmd"</span>, </span>
+<span id="cb15-3"><a href="" aria-label="3"></a>  <span class="at">output_file =</span> <span class="fu">paste0</span>(<span class="st">"example_"</span>, <span class="fu">Sys.Date</span>(), <span class="st">".html"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div><div class="column" style="width:&quot;50%;">
-<h3 id="spinning-knit-button-1">Spinning <span class="small">(Knit button)</span></h3>
+<h3 id="spinning-1">Spinning</h3>
 <div class="small">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="" aria-label="1"></a><span class="co">#' ## Setup</span></span>
-<span id="cb15-2"><a href="" aria-label="2"></a><span class="co">#' This is my **great** study.... I used these packages:</span></span>
-<span id="cb15-3"><a href="" aria-label="3"></a></span>
-<span id="cb15-4"><a href="" aria-label="4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb15-5"><a href="" aria-label="5"></a></span>
-<span id="cb15-6"><a href="" aria-label="6"></a><span class="co">#' ## Loading data</span></span>
-<span id="cb15-7"><a href="" aria-label="7"></a><span class="co">#' These are the datasets I used</span></span>
-<span id="cb15-8"><a href="" aria-label="8"></a></span>
-<span id="cb15-9"><a href="" aria-label="9"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span>)</span>
-<span id="cb15-10"><a href="" aria-label="10"></a>my_data</span>
-<span id="cb15-11"><a href="" aria-label="11"></a></span>
-<span id="cb15-12"><a href="" aria-label="12"></a><span class="co">#' This is what it looks like</span></span>
-<span id="cb15-13"><a href="" aria-label="13"></a></span>
-<span id="cb15-14"><a href="" aria-label="14"></a><span class="co">#+ fig-width = 6</span></span>
-<span id="cb15-15"><a href="" aria-label="15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="" aria-label="16"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="" aria-label="1"></a><span class="co">#' ## Setup</span></span>
+<span id="cb16-2"><a href="" aria-label="2"></a><span class="co">#' This is my **great** study.... I used these packages:</span></span>
+<span id="cb16-3"><a href="" aria-label="3"></a></span>
+<span id="cb16-4"><a href="" aria-label="4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-5"><a href="" aria-label="5"></a></span>
+<span id="cb16-6"><a href="" aria-label="6"></a><span class="co">#' ## Loading data</span></span>
+<span id="cb16-7"><a href="" aria-label="7"></a><span class="co">#' These are the datasets I used</span></span>
+<span id="cb16-8"><a href="" aria-label="8"></a></span>
+<span id="cb16-9"><a href="" aria-label="9"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"</span>)</span>
+<span id="cb16-10"><a href="" aria-label="10"></a>my_data</span>
+<span id="cb16-11"><a href="" aria-label="11"></a></span>
+<span id="cb16-12"><a href="" aria-label="12"></a><span class="co">#' This is what it looks like</span></span>
+<span id="cb16-13"><a href="" aria-label="13"></a></span>
+<span id="cb16-14"><a href="" aria-label="14"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb16-15"><a href="" aria-label="15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> my_data, <span class="fu">aes</span>(<span class="at">x =</span> urbanization, <span class="at">y =</span> songs)) <span class="sc">+</span></span>
+<span id="cb16-16"><a href="" aria-label="16"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div style="margin-top:6.1em">
-<p>Or spin/render with:</p>
+<div style="margin-top:5.65em">
+<p>Render with:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="" aria-label="1"></a>knitr<span class="sc">::</span><span class="fu">spin</span>(<span class="st">"example_spin.R"</span>, <span class="at">knit =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-2"><a href="" aria-label="2"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb16-3"><a href="" aria-label="3"></a>  <span class="at">input =</span> <span class="st">"example_spin.Rmd"</span>,</span>
-<span id="cb16-4"><a href="" aria-label="4"></a>  <span class="at">output_file =</span> <span class="fu">paste0</span>(<span class="st">"example_spin_"</span>, <span class="fu">Sys.Date</span>(), <span class="st">".html"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="" aria-label="1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb17-2"><a href="" aria-label="2"></a>  <span class="at">input =</span> <span class="st">"example_spin.R"</span>,</span>
+<span id="cb17-3"><a href="" aria-label="3"></a>  <span class="at">output_file =</span> <span class="fu">paste0</span>(<span class="st">"example_spin_"</span>, <span class="fu">Sys.Date</span>(), <span class="st">".html"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -807,10 +873,10 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 <h2>Relative locations</h2>
 <p>If you use nested folders in your work,<br> you’ll want to use the <a href="https://here.r-lib.org/">here</a> package to ensure<br> all the file locations are consistent</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="" aria-label="1"></a><span class="fu">library</span>(here)</span>
-<span id="cb17-2"><a href="" aria-label="2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb17-3"><a href="" aria-label="3"></a></span>
-<span id="cb17-4"><a href="" aria-label="4"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"Data/my_data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-label="1"></a><span class="fu">library</span>(here)</span>
+<span id="cb18-2"><a href="" aria-label="2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-3"><a href="" aria-label="3"></a></span>
+<span id="cb18-4"><a href="" aria-label="4"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"Data/my_data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img data-src="figures/here.png" class="absolute" style="bottom: 0px; right: -5%; width: 58%; " alt="A cartoon showing two paths side-by-side. On the left is a scary spooky forest, with spiderwebs and gnarled trees, with file paths written on the branches like '~/mmm/nope.csv' and 'setwd('/haha/good/luck/')', with a scared looking cute fuzzy monster running out of it. On the right is a bright, colorful path with flowers, rainbow and sunshine, with signs saying 'here!' and 'it’s all right here!' A monster facing away from us in a backpack and walking stick is looking toward the right path. Stylized text reads 'here: find your path.'"></p>
 <p><span class="footnote">Artwork by <a href="https://twitter.com/allison_horst"><span class="citation" data-cites="allison_horst">@allison_horst</span></a></span></p>
@@ -858,6 +924,23 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 </div>
 </div>
 </div>
+</section></section>
+<section id="whats-next" class="title-slide slide level1 center">
+<h1>What’s next?</h1>
+<p><a href="https://opensource.posit.co/blog/2026-04-06_whats-next-quarto-2/">Quarto 2</a>!<br>
+100x faster!<br>
+Collaborative editor!<br>
+Backwards compatibility for Quarto 1<br>
+</p>
+<div class="spacer">
+<p><em>Probably still about a year out</em></p>
+</div>
+</section>
+
+<section>
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank You!</h1>
+
 </section>
 <section id="resources" class="slide level2 nostretch">
 <h2>Resources</h2>
@@ -891,7 +974,7 @@ Quarto (<code>.qmd</code>) is the <em>next generation</em> of R Markdown (<code>
 </ul>
 </div></div>
 <div class="fragment absolute" data-fragment-index="1" style="top: 45%; right: 0px; width: 30%; ">
-<h3 id="thank-you">Thank you!</h3>
+<h3 id="thank-you-1">Thank you!</h3>
 <p><span class="small"><em>Please fill out this <a href="https://forms.gle/VTHRDt6eQxkbnyZz9">feedback form</a></em></span></p>
 <p><img data-src="https://steffilazerte.ca/images/logo_eg.png"> <span class="small"><i class="fa-solid fa-globe" aria-label="globe"></i> <a href="https://steffilazerte.ca">steffilazerte.ca</a></span><br> <span class="small"><i class="fa-solid fa-envelope" aria-label="envelope"></i> <a href="mailto:sel@steffilazerte.ca" class="email">sel@steffilazerte.ca</a></span></p>
 </div>
