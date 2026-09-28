@@ -125,7 +125,9 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 ### Setup {style="margin-top: 0"}
 This is my **great** study.... I used these packages:
 
-```{r message = TRUE}
+```{r}
+#| label: load-packages
+#| message: true
 library(tidyverse)
 ```
 
@@ -133,6 +135,7 @@ library(tidyverse)
 These are the datasets I used
 
 ```{r}
+#| label: load-data
 my_data <- read_csv(
   "https://raw.githubusercontent.com/steffilazerte/NRI_7350/main/data/chorus.csv"
 )
@@ -142,6 +145,7 @@ my_data
 This is what it looks like
 
 ```{r}
+#| label: plot-songs
 #| fig-width: 6
 ggplot(data = my_data, aes(x = urbanization, y = songs)) +
   geom_point()
@@ -306,7 +310,7 @@ Keep it relatively simple for now `r emo::ji("wink")`
 
 [**For example, the following...**]{.spacer}
 
-```{md, eval = FALSE}
+```{md markdown-example, eval = FALSE}
 ### My heading
 
 **Hi!** This is in *italics*
@@ -445,6 +449,7 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 ## Gives...
 
 ```{r}
+#| label: plot-songs-captioned
 #| fig-width: 10
 #| fig-asp: 0.5
 #| fig-alt: |
@@ -471,6 +476,7 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 - Embed data directly (for smaller datasets) using [DT](https://rstudio.github.io/DT/) package
 
 ```{r}
+#| label: embed-data
 #| eval: false
 
 DT::datatable(mtcars, extensions = 'Buttons',
@@ -587,6 +593,7 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 
 Use "Render" button or render with:
 ```{r}
+#| label: render-qmd
 #| eval: false
 quarto::quarto_render(
   input = "example.qmd", 
@@ -605,6 +612,7 @@ quarto::quarto_render(
 :::{.small}
 
 ```{r}
+#| label: spin-example
 #| eval: false
 #' ## Setup
 #' This is my **great** study.... I used these packages:
@@ -619,7 +627,7 @@ my_data
 
 #' This is what it looks like
 
-#+ fig-width = 6
+#| fig-width: 6
 ggplot(data = my_data, aes(x = urbanization, y = songs)) +
   geom_point()
 ```
@@ -627,6 +635,7 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 :::{style="margin-top:5.65em"}
 Render with:
 ```{r}
+#| label: render-spin
 #| eval: false
 quarto::quarto_render(
   input = "example_spin.R",
@@ -650,7 +659,9 @@ If you use nested folders in your work,<br>
 you'll want to use the [here](https://here.r-lib.org/) package to ensure<br>
 all the file locations are consistent
 
-```{r eval = FALSE}
+```{r}
+#| label: here-example
+#| eval: false
 library(here)
 library(tidyverse)
 
