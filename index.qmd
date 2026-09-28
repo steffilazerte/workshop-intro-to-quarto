@@ -81,7 +81,10 @@ Today we're learning to create static HTML reports from R code
 - Keep track of your code *and* results
 - Share your work
 - Ensure reproducibility
-- Be nice to your future self (*What did I do again? What were the results?*)
+- Be nice to your future self 
+  - *What did I do again?*
+  - *What were the results?*
+  - *Did I remember to remove partial observations?*
 :::
 
 ::: {.fragment}
@@ -265,12 +268,26 @@ Keep it relatively simple for now `r emo::ji("wink")`
 
 - Both are programs
 - R is the programming language/envrionment
-- RStudio is an IDE (integrated development environment)
+- RStudio is an IDE (integrated development environment) by Posit
 
 ::: {layout="[-2, 13,-4,10,-3]" layout-valign="center"}
 ![R](figures/R.png){fig-alt=""}
 
 ![RStudio](figures/RStudio-Ball.png){fig-alt=""}
+:::
+
+## Terminology
+
+### R & Positron
+
+- Both are programs
+- R is the programming language/envrionment
+- Positron is a *newer* IDE (integrated development environment) by Posit
+
+::: {layout="[-2, 13,-4,10,-3]" layout-valign="center"}
+![R](figures/R.png){fig-alt=""}
+
+![Positron](figures/positron-logo.png){fig-alt=""}
 :::
 
 
@@ -320,6 +337,7 @@ A [link](https://cran.r-project.org/) to R
 - **R Markdown(`.Rmd`)** and **Quarto (`.qmd`)** files are a *mix* of Markdown *and* R code
 - **knitr** is an R package which evaluates R code and returns the output as a Markdown file
 - **Pandoc** is a separate (independent) program that converts Markdown to a variety of formats
+- **Quarto** manages the pipeline
 
 ![](https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png){fig-alt="How Quarto works: qmd to knitr to md to pandoc to multiple formats including pdf, HTML and Microsoft Word"}
 
@@ -481,15 +499,13 @@ Consider `code-fold: true` or `toc: false`
 
 # Some Final Thoughts
 
-
 ## Rendering vs. Spinning
-
 
 ::::{.columns}
 
 :::{.column width="50%"}
 
-### Rendering [(Render/Knit button)]{.small}
+### Rendering
 :::{.hide .spacer}
 |                    |   |       |   |      |
 | -----------------: | - | ----- | - | ---- |
@@ -498,15 +514,19 @@ Consider `code-fold: true` or `toc: false`
 :::
 
 :::{.spacer .fragment  fragment-index=2}
-- Good for lots of text 
-- Better option control
-- Use ` ```{r} ` and ` ``` `to define code blocks
+- Easier to write narrative
+- Define code
+    - Use ` ```{r} ` and ` ``` `to define code blocks
+- Define options with `#|`
+    - *Inside* a code block
+- Render button or `quarto_render()` function
 :::
 
 :::
 
 :::{.column width="50%"}
-### Spinning [(Knit button)]{.small}
+### Spinning
+
 :::{.hide .spacer}
 |                    |   |       |   |      |
 | -----------------: | - | ----- | - | ---- |
@@ -517,11 +537,15 @@ Consider `code-fold: true` or `toc: false`
 
 :::{.spacer .fragment fragment-index=2}
 - Easier to code 
-- Use `#'` to define markdown
-- Use `#+` to define chunk options
-  - Use Rmarkdown option style
-  - i.e., `error=FALSE` not `error: false`
+- Define text 
+    - Use `#'` to define markdown
+- Define options with `#|`
+    - Above a code block
+    - Use empty `#|` to split code chunks
+- `quarto_render()`[^2] function
 :::
+
+[^2]: If you use Rmarkdown syntax instead of Quarto, you can use the "Compile Report" button
 
 :::
 ::::
@@ -532,7 +556,7 @@ Consider `code-fold: true` or `toc: false`
 
 :::{.column width="50%"}
 
-### Rendering [(Render/Knit button)]{.small}
+### Rendering
 
 :::{.small}
 
@@ -561,7 +585,7 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
 ```
 ````
 
-Or render with:
+Use "Render" button or render with:
 ```{r}
 #| eval: false
 quarto::quarto_render(
@@ -574,11 +598,14 @@ quarto::quarto_render(
 
 :::{.column width="50%}
 
-### Spinning [(Knit button)]{.small}
+### Spinning
+
+
 
 :::{.small}
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 #' ## Setup
 #' This is my **great** study.... I used these packages:
 
@@ -597,13 +624,12 @@ ggplot(data = my_data, aes(x = urbanization, y = songs)) +
   geom_point()
 ```
 
-:::{style="margin-top:6.1em"}
-Or spin/render with:
+:::{style="margin-top:5.65em"}
+Render with:
 ```{r}
 #| eval: false
-knitr::spin("example_spin.R", knit = FALSE)
 quarto::quarto_render(
-  input = "example_spin.Rmd",
+  input = "example_spin.R",
   output_file = paste0("example_spin_", Sys.Date(), ".html"))
 ```
 :::
@@ -669,6 +695,20 @@ Effects of Riparian Grazing on Distinct Water-Extractable Phosphorus Sources ([G
 
 ![A notebook associated with the manuscript](figures/notebook.png){fig-alt=""}
 :::
+
+# What's next?
+[Quarto 2](https://opensource.posit.co/blog/2026-04-06_whats-next-quarto-2/)!\
+100x faster!\
+Collaborative editor!\
+Backwards compatibility for Quarto 1\
+
+:::{.spacer}
+*Probably still about a year out*
+:::
+
+
+
+# Thank You!
 
 ## Resources  {.nostretch}
 
