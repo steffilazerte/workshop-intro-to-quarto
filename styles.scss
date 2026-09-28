@@ -12,8 +12,8 @@ $presentation-heading-color: #1f508c;
 $code-color: #1f508c;
 
 $code-block-font-size: 0.65em;
-$code-block-bg: #ebe8e8;
-$code-block-border-color: none;
+$code-block-bg: #e4f5fa;
+$code-block-border-color: rgba(0, 0, 0, 0.5);
 
 $code-highlight-color: yellow;
 /*$presentation-heading-color: #246abf;*/
@@ -71,11 +71,12 @@ figcaption {
 }
 
 .reveal .slide blockquote {
-  border-left: 0;
-  background-color: $selection-bg;
+  border: none;
+  border-radius: 8px;
+  background-color: #9ed0e6;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0);
+  padding: 0.5em 0.75em;
   color: inherit;
-  padding: 0.5em;
-  box-shadow: 5px 5px #808080;
   text-align: center;
 }
 
@@ -146,7 +147,7 @@ figcaption {
   border: 2px solid #808080;;
   padding: 0.5em;
   box-shadow: 5px 5px #808080;
-  overflow: scroll;
+  overflow: auto;
   max-height: 600px;
 }
 
